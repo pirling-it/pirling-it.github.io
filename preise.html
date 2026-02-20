@@ -7,13 +7,16 @@
 
     <style>
         /* GLOBAL */
-body {
-    background-image: url('waben512.png'); /* oder direkt die URL */
-    background-repeat: repeat;
-    background-size: auto;
-    background-color: #000000;
-}
-
+        body {
+            background-image: url('waben512.png');
+            background-repeat: repeat;
+            background-size: 512px 512px;
+            background-color: #000000;
+            background-attachment: fixed; /* Hintergrund bleibt stehen */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #E5E5E5;
+        }
 
         a {
             color: #D7263D;
@@ -42,14 +45,14 @@ body {
 
         /* PREISBOXEN */
         .preisbox {
-            background: #111111; /* dunkles Samurai-Grau */
-            border-left: 4px solid #D7263D; /* roter Energie-Streifen */
+            background: #111111;
+            border-left: 4px solid #D7263D;
             border-top: 4px solid #D7263D;
             padding: 25px;
             border-radius: 16px;
             margin: 20px auto;
             max-width: 800px;
-            box-shadow: 25px 25px 25px rgba(215,38,61,0.25); /* roter Glow */
+            box-shadow: 25px 25px 25px rgba(215,38,61,0.25);
         }
 
         .preisbox h2 {
@@ -62,7 +65,7 @@ body {
         .preis {
             font-size: 22px;
             font-weight: bold;
-            color: #FF0033; /* helleres Rot für Preis */
+            color: #FF0033;
             margin-top: 10px;
         }
 
@@ -91,40 +94,38 @@ body {
 
 <body>
 
-<h1>Preise</h1>
-<p class="intro">Transparente und faire Preise für privaten IT‑Support und kleine Unternehmen.</p>
+    <h1>Preise</h1>
+    <p class="intro">Transparente und faire Preise für privaten IT‑Support und kleine Unternehmen.</p>
 
-<div class="preisbox">
-    <h2>🛠️ Standard‑Support</h2>
-    <p>Ideal für typische Probleme wie Windows‑Fehler, Netzwerk‑Optimierung, Drucker‑Probleme, Software‑Hilfe.</p>
-    <p class="preis">25 € / 30 Minuten</p>
-</div>
+    <div class="preisbox">
+        <h2>🛠️ Standard‑Support</h2>
+        <p>Ideal für typische Probleme wie Windows‑Fehler, Netzwerk‑Optimierung, Drucker‑Probleme, Software‑Hilfe.</p>
+        <p class="preis">25 € / 30 Minuten</p>
+    </div>
 
-<div class="preisbox">
-    <h2>🌐 Remote‑Support</h2>
-    <p>Bequeme Hilfe per Fernzugriff – schnell, sicher und ohne Anfahrt.</p>
-    <p class="preis">20 € / 30 Minuten</p>
-</div>
+    <div class="preisbox">
+        <h2>🌐 Remote‑Support</h2>
+        <p>Bequeme Hilfe per Fernzugriff – schnell, sicher und ohne Anfahrt.</p>
+        <p class="preis">20 € / 30 Minuten</p>
+    </div>
 
-<div class="preisbox">
-    <h2>🏠 Vor‑Ort‑Service</h2>
-    <p>Für Hardware‑Einrichtung, Netzwerk‑Checks oder komplexere Probleme.</p>
-    <p class="preis">50 € / Stunde</p>
-</div>
+    <div class="preisbox">
+        <h2>🏠 Vor‑Ort‑Service</h2>
+        <p>Für Hardware‑Einrichtung, Netzwerk‑Checks oder komplexere Probleme.</p>
+        <p class="preis">50 € / Stunde</p>
+    </div>
 
-<div class="preisbox">
-    <h2>📦 Komplett‑Pakete</h2>
-    <p>Für größere Projekte wie PC‑Neuaufbau, Netzwerk‑Umbau oder System‑Optimierung.</p>
-    <p class="preis">Individuell – nach Aufwand</p>
-</div>
+    <div class="preisbox">
+        <h2>📦 Komplett‑Pakete</h2>
+        <p>Für größere Projekte wie PC‑Neuaufbau, Netzwerk‑Umbau oder System‑Optimierung.</p>
+        <p class="preis">Individuell – nach Aufwand</p>
+    </div>
 
-<a href="index.html" class="backlink">← Zurück zur Startseite</a>
+    <a href="index.html" class="backlink">← Zurück zur Startseite</a>
 
-<footer>
-    © 2026 Pirling IT – Professioneller IT‑Support
-</footer>
+    <footer>
+        © 2026 Pirling IT – Professioneller IT‑Support
+    </footer>
 
 </body>
 </html>
-
-

@@ -8,11 +8,11 @@
     <style>
         /* GLOBAL */
         body {
-            background-image: url('waben512.png');
+            background-image: url('body-tiled.png');
             background-repeat: repeat;
             background-size: 512px 512px;
             background-color: #000000;
-            background-attachment: fixed; /* Hintergrund bleibt stehen */
+            background-attachment: fixed;
             margin: 0;
             font-family: Arial, sans-serif;
             color: #E5E5E5;
@@ -60,3 +60,103 @@
         }
 
         /* CARDS */
+        .card {
+            background: #111111;
+            color: #E5E5E5;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border-left: 4px solid #D7263D;
+            border-top: 4px solid #D7263D;
+            box-shadow: 25px 25px 25px rgba(215,38,61,0.25);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #D7263D;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            background: #D7263D;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 5px 5px 8px rgba(215,38,61,0.45);
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #FF0033;
+            box-shadow: 0 0 25px rgba(255,0,51,0.7);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Pirling IT</h1>
+        <p>IT‑Support • Netzwerke • Windows • Troubleshooting</p>
+    </header>
+
+    <div class="content">
+
+        <div class="card">
+            <h2>Über mich</h2>
+            <p>
+                Ich bin Michael Pirling – Ihr Ansprechpartner für zuverlässigen IT‑Support,
+                klare Problemlösungen und moderne Netzwerk‑Technik.
+                Ob privat oder kleines Unternehmen: Ich helfe schnell, verständlich und professionell.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Leistungen</h2>
+            <ul>
+                <li>Windows‑Support & Fehlerbehebung</li>
+                <li>Netzwerk‑Analyse & Optimierung</li>
+                <li>Remote‑Support für Privat & Kleinunternehmen</li>
+                <li>Hardware‑Beratung & Einrichtung</li>
+                <li>IT‑Sicherheit & Systempflege</li>
+            </ul>
+
+            <a href="preise.html" class="btn">Preise ansehen</a>
+        </div>
+
+        <div class="card">
+            <h2>Kontakt</h2>
+            <p>Sie erreichen mich per <a href="mailto:pirlingm@gmail.com">E‑Mail</a>.</p>
+            <p>Weitere Kontaktmöglichkeiten folgen in Kürze.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Pirling IT – Professioneller IT‑Support · <a href="impressum.html">Impressum</a>
+    </footer>
+
+</body>
+</html>

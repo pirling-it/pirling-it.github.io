@@ -85,6 +85,60 @@
             font-size: 0.9rem;
             margin-top: 40px;
         }
+        .kontaktformular {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Name + Email nebeneinander */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-full {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Eingabefelder */
+.kontaktformular input,
+.kontaktformular textarea {
+    padding: 12px;
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: 6px;
+    background: rgba(255, 0, 0, 0.08); /* transparentes Rot */
+    color: #fff;
+    font-size: 16px;
+}
+
+/* Nachrichtenfeld */
+.kontaktformular textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+/* Button */
+.kontaktbutton {
+    padding: 12px 20px;
+    background: #c40000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.kontaktbutton:hover {
+    background: #e00000;
+}
     </style>
 </head>
 
@@ -122,6 +176,11 @@
 
     <form class="kontaktformular" action="https://formspree.io/f/DEINE-ID" method="POST">
         
+<div class="kontaktbox">
+    <h2>📬 Kontaktformular</h2>
+
+    <form class="kontaktformular" action="https://formspree.io/f/DEINE-ID" method="POST">
+        
         <div class="form-row">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -142,7 +201,6 @@
         <button type="submit" class="kontaktbutton">Absenden</button>
     </form>
 </div>
-    </div>
 
     <!-- ZURÜCK -->
     <a href="index.html" class="backlink">← Zurück zur Startseite</a>

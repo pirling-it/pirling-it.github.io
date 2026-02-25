@@ -126,11 +126,12 @@
 
         h2 {
             text-align: center;
-            margin-top: 0;
             color: #D7263D;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
+            font-size: 35px;
+            margin-bottom: 20px;
+        }  
 
         ul {
             padding-left: 20px;

@@ -1,51 +1,122 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pirling IT – Wartung</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         body {
+            background: #000;
+            background-image: url('waben512.png');
+            background-size: 512px;
+            background-repeat: repeat;
+            background-attachment: fixed;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #1f2937;
-            color: #f1f1f1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: #E5E5E5;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(10,10,10,0.85);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 20px;
+            border: 1px solid rgba(215,38,61,0.4);
+            box-shadow: 0 0 20px rgba(215,38,61,0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            color: #D7263D;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* CARD */
+        .card {
+            max-width: 700px;
+            margin: 60px auto;
+            background: rgba(17,17,17,0.9);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(215,38,61,0.25);
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            backdrop-filter: blur(3px);
             text-align: center;
         }
-        .box {
-            max-width: 500px;
-            padding: 30px;
-            background: #2d3748;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.4);
-        }
-        h1 {
+
+        h2 {
             margin-top: 0;
-            font-size: 2rem;
+            color: #D7263D;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
+
         p {
             opacity: 0.9;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-size: 1.1rem;
         }
-        .small {
-            margin-top: 20px;
-            font-size: 0.85rem;
-            opacity: 0.6;
+
+        /* LOADER */
+        .loader {
+            width: 45px;
+            height: 45px;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top-color: #D7263D;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
         }
     </style>
 </head>
+
 <body>
 
-<div class="box">
-    <h1>🚧 Seite im Aufbau 🚧 </h1>
-    <p>Hier entsteht gerade die neue Homepage von <strong>Pirling IT</strong>.</p>
-    <p>Ich arbeite daran, Ihnen bald professionelle IT‑Unterstützung, klare Informationen und einfache Kontaktmöglichkeiten bereitzustellen.</p>
-    <p class="small">Bitte schauen Sie später noch einmal vorbei.</p>
-</div>
+    <header>
+        <h1>Pirling IT</h1>
+        <p>IT‑Support • Netzwerke • Windows • Troubleshooting</p>
+    </header>
+
+    <div class="card">
+        <div class="loader"></div>
+        <h2>Seite im Aufbau</h2>
+        <p>Hier entsteht gerade die neue Homepage von <strong>Pirling IT</strong>.</p>
+        <p>Ich arbeite daran, Ihnen bald professionelle IT‑Unterstützung, klare Informationen und einfache Kontaktmöglichkeiten bereitzustellen.</p>
+        <p>Bitte schauen Sie später noch einmal vorbei.</p>
+    </div>
+
+    <footer>
+        © 2026 Pirling IT – Professioneller IT‑Support · <a href="impressum.html">Impressum</a> · <a href="kontakt.html">Kontakt</a>
+    </footer>
 
 </body>
 </html>
-

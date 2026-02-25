@@ -1,7 +1,7 @@
    <style>
         /* GLOBAL */
         body {
-            background-image: url('waben512.png');
+            background-image: url('/img/waben512.png');
             background-repeat: repeat;
             background-size: 512px 512px;
             background-color: #000000;
@@ -9,7 +9,8 @@
             margin: 0;
             font-family: Arial, sans-serif;
             color: #E5E5E5;
-        }
+        }
+
         a {
             color: #D7263D;
             text-decoration: none;

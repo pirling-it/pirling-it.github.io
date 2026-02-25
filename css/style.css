@@ -71,6 +71,60 @@
             box-shadow: 0 0 25px rgba(215,38,61,0.25);
         }
 
+        /* HEADERBOX */
+        .headerbox {
+            background: #111111;
+            color: #E5E5E5;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            margin: 40px auto;
+            max-width: 900px;
+            border-left: 4px solid #D7263D;
+            border-top: 4px solid #D7263D;
+            box-shadow: 0 0 25px rgba(215,38,61,0.25);
+        }
+
+        .headerbox .intro {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* KONTAKTBOX */
+        .kontaktbox {
+            background: #111111;
+            color: #E5E5E5;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            margin: 0 auto 50px auto;
+            max-width: 900px;
+            border-left: 4px solid #D7263D;
+            border-top: 4px solid #D7263D;
+            box-shadow: 0 0 25px rgba(215,38,61,0.25);
+        }
+
+        /* PREISBOX */
+        .preisbox {
+            background: #111111;
+            color: #E5E5E5;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            margin: 0 auto 50px auto;
+            max-width: 900px;
+            border-left: 4px solid #D7263D;
+            border-top: 4px solid #D7263D;
+            box-shadow: 0 0 25px rgba(215,38,61,0.25);
+        }
+
+        .preisbox .preis {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #D7263D;
+            margin-top: 15px;
+        }
+
         h2 {
             margin-top: 0;
             color: #D7263D;

@@ -97,6 +97,39 @@
             color: #777;
             font-size: 0.9rem;
         }
+        .hex-glow {
+            width: 50px;
+            height: 28.9px;
+            background: #D7263D;
+            position: relative;
+            margin: 0 auto 25px;
+            border-radius: 4px;
+            box-shadow: 0 0 20px #D7263D;
+            animation: hexrotate 1.4s linear infinite;
+        }
+
+        .hex-glow:before,
+        .hex-glow:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+        }
+
+        .hex-glow:before {
+            bottom: 100%;
+            border-bottom: 14.45px solid #D7263D;
+        }
+
+        .hex-glow:after {
+            top: 100%;
+            border-top: 14.45px solid #D7263D;
+        }
+
+        @keyframes hexrotate {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 
@@ -108,7 +141,8 @@
     </header>
 
     <div class="card">
-        <div class="loader"></div>
+#        <div class="loader"></div>
+        <div class="hex-glow"></div>
         <h2>Seite im Aufbau</h2>
         <p>Hier entsteht gerade die neue Homepage von <strong>Pirling IT</strong>.</p>
         <p>Ich arbeite daran, Ihnen bald professionelle IT‑Unterstützung, klare Informationen und einfache Kontaktmöglichkeiten bereitzustellen.</p>

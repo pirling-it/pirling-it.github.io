@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Pirling IT – Ihr IT-Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --bg-alt: #020617;
+            --accent: #3b82f6;
+            --accent-soft: #1d4ed8;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --card: #111827;
+            --border: #1f2937;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #1f2937 0, #020617 55%, #000 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Layout-Grundstruktur */
+
+        .page {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            grid-template-columns: 260px 1fr;
+            grid-template-areas:
+                "header header"
+                "sidebar main";
+            min-height: 100vh;
+        }
+
+        header {
+            grid-area: header;
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .brand-text-main {
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-text-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .header-nav a {
+            padding: 0.25rem 0;
+            position: relative;
+        }
+
+        .header-nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.2rem;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.2s ease;
+        }
+
+        .header-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sidebar */
+
+        .sidebar {
+            grid-area: sidebar;
+            border-right: 1px solid var(--border);
+            background: linear-gradient(to bottom, #020617, #020617 40%, #000 100%);
+            padding: 1.5rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-list a {
+            padding: 0.35rem 0.4rem;
+            border-radius: 0.4rem;
+            color: var(--text-muted);
+            transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+        }
+
+        .sidebar-list a:hover {
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text);
+            transform: translateX(2px);
+        }
+
+        .sidebar-highlight {
+            padding: 0.9rem 0.8rem;
+            border-radius: 0.75rem;
+            background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            font-size: 0.85rem;
+        }
+
+        .sidebar-highlight strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-contact {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .sidebar-contact a {
+            color: var(--accent);
+        }
+
+        /* Main */
+
+        main {
+            grid-area: main;
+            padding: 1.75rem 1.75rem 2.5rem;
+        }
+
+        .main-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Hero */
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 1.75rem;
+            align-items: center;
+        }
+
+        .hero-kicker {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            max-width: 34rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            color: var(--text-muted);
+        }
+
+        .badge--accent {
+            border-color: rgba(59, 130, 246, 0.7);
+            color: var(--accent);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: #f9fafb;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.45);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-muted);
+            border-color: var(--border);
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(148, 163, 184, 0.8);
+            color: var(--text);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .hero-aside {
+            background: radial-gradient(circle at top, rgba(59, 130, 246, 0.35), rgba(15, 23, 42, 0.98));
+            border-radius: 1.25rem;
+            border: 1px solid rgba(30, 64, 175, 0.7);
+            padding: 1.25rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .hero-aside-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hero-aside-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .hero-aside-list li::before {
+            content: "•";
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        /* Sektion: Leistungen */
+
+        .section {
+            margin-top: 0.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+        }
+
+        .section-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 0.9rem;
+            border: 1px solid rgba(15, 23, 42, 0.9);
+            padding: 0.9rem 0.9rem 1rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+            font-size: 0.9rem;
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .card-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(31, 41, 55, 0.9);
+            color: var(--text-muted);
+        }
+
+        /* Sektion: Über mich / Vertrauen */
+
+        .about {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .about-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .about-highlight {
+            background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.98));
+            border-radius: 1rem;
+            border: 1px solid rgba(37, 99, 235, 0.6);
+            padding: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .about-highlight strong {
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Footer */
+
+        footer {
+            margin-top: 2rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+            .page {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "main";
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            main {
+                padding: 1.25rem 1.1rem 2rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-icon">P</div>
+                <div>
+                    <div class="brand-text-main">Pirling IT</div>
+                    <div class="brand-text-sub">Individueller IT-Support für Zuhause & kleine Unternehmen</div>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#about">Über mich</a>
+                <a href="#ablauf">Ablauf</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <section>
+            <div class="sidebar-section-title">Direkt zu</div>
+            <ul class="sidebar-list">
+                <li><a href="#notfall">Schnelle Hilfe</a></li>
+                <li><a href="#leistungen">Typische Probleme</a></li>
+                <li><a href="#ablauf">Ablauf & Transparenz</a></li>
+                <li><a href="#kontakt">Kontakt aufnehmen</a></li>
+            </ul>
+        </section>
+
+        <section class="sidebar-highlight" id="notfall">
+            <strong>Schnelle Hilfe bei Akut-Problemen</strong>
+            Wenn nichts mehr geht: kurze Beschreibung, ein Foto oder Screenshot – ich melde mich so schnell wie möglich.
+        </section>
+
+        <section class="sidebar-contact" id="kontakt">
+            <div class="sidebar-section-title">Kontakt</div>
+            <p>E-Mail: <a href="mailto:info@pirling-it.de">info@pirling-it.de</a></p>
+            <p>Auf Wunsch: Fernwartung per gesicherter Verbindung.</p>
+        </section>
+    </aside>
+
+    <main>
+        <div class="main-inner">
+            <section class="hero">
+                <div>
+                    <div class="hero-kicker">IT-Support, der in den Alltag passt</div>
+                    <h1 class="hero-title">Pragmatische IT-Lösungen<br>für echte Menschen – nicht nur für Rechenzentren.</h1>
+                    <p class="hero-subtitle">
+                        Sie möchten, dass Ihre Technik einfach funktioniert – ohne Fachchinesisch, ohne versteckte Kosten.
+                        Ich kümmere mich um Ihre IT, damit Sie sich um Ihr Leben kümmern können.
+                    </p>
+
+                    <div class="hero-badges">
+                        <span class="badge badge--accent">Remote & vor Ort (nach Absprache)</span>
+                        <span class="badge">Windows, Linux, Netzwerk</span>
+                        <span class="badge">Privat & kleine Unternehmen</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#kontakt" class="btn btn-primary">
+                            Anfrage stellen
+                        </a>
+                        <a href="#leistungen" class="btn btn-ghost">
+                            Typische Fälle ansehen
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="hero-aside">
+                    <div class="hero-aside-title">Was ich für Sie übernehme</div>
+                    <ul class="hero-aside-list">
+                        <li>Fehlersuche bei langsamen oder instabilen Systemen</li>
+                        <li>Netzwerk- & WLAN-Probleme im Haushalt oder Büro</li>
+                        <li>Einrichtung neuer Geräte & Datensicherung</li>
+                        <li>Beratung: Was lohnt sich wirklich – und was nicht?</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section class="section" id="leistungen">
+                <div class="section-header">
+                    <h2 class="section-title">Leistungen</h2>
+                    <div class="section-sub">Klar strukturiert, transparent erklärt.</div>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <h3 class="card-title">Fehlersuche & Problemlösung</h3>
+                        <p class="card-text">
+                            System langsam, Programme stürzen ab, Drucker streikt? Ich gehe strukturiert vor, erkläre die
+                            Schritte und dokumentiere, was getan wurde.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">Windows</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Treiber & Updates</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="card-title">Netzwerk & WLAN</h3>
+                        <p class="card-text">
+                            Vom Router bis zum letzten Zimmer: saubere Struktur, sinnvolle Namen, stabile Verbindungen –
+                            auch in komplexeren Haushalten.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">Fritz!Box</span>
+                            <span class="tag">LAN & WLAN</span>
+                            <span class="tag">Heimnetz</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="card-title">Einrichtung & Umzug</h3>
+                        <p class="card-text">
+                            Neuer PC, Notebook oder Server? Ich richte Systeme so ein, dass sie zu Ihrem Alltag passen –
+                            inklusive Datensicherung.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">Backup</span>
+                            <span class="tag">E-Mail & Office</span>
+                            <span class="tag">Datenumzug</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="card-title">Beratung & Zweitmeinung</h3>
+                        <p class="card-text">
+                            Sie sind unsicher, ob ein Angebot sinnvoll ist? Wir rechnen gemeinsam nach und schauen, was
+                            wirklich zu Ihnen passt.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">Kaufberatung</span>
+                            <span class="tag">Kosten-Nutzen</span>
+                            <span class="tag">Langfristige Planung</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="about">
+                <div class="section-header">
+                    <h2 class="section-title">Über mich</h2>
+                    <div class="section-sub">Technik mit Bodenhaftung.</div>
+                </div>
+
+                <div class="about">
+                    <div class="about-text">
+                        <p>
+                            Ich arbeite seit Jahren praktisch mit Systemen, Netzwerken und Geräten, die im Alltag
+                            wirklich genutzt werden – nicht nur im Labor. Mir ist wichtig, dass Lösungen nachvollziehbar,
+                            reproduzierbar und alltagstauglich sind.
+                        </p>
+                        <br>
+                        <p>
+                            Statt „einmal schnell irgendwas hinbiegen“ setze ich auf saubere Struktur, klare Dokumentation
+                            und Entscheidungen, die auch in ein paar Monaten noch Sinn ergeben.
+                        </p>
+                    </div>
+                    <aside class="about-highlight">
+                        <strong>Was Sie von mir erwarten können</strong>
+                        • Ehrliche Einschätzung, ob sich eine Reparatur oder ein Umbau lohnt.<br>
+                        • Klare Absprachen, kein Fachjargon ohne Übersetzung.<br>
+                        • Lösungen, die zu Ihrem Alltag, nicht zu Hochglanz-Broschüren passen.
+                    </aside>
+                </div>
+            </section>
+
+            <section class="section" id="ablauf">
+                <div class="section-header">
+                    <h2 class="section-title">Ablauf</h2>
+                    <div class="section-sub">In wenigen Schritten zur Lösung.</div>
+                </div>
+                <div class="cards">
+                    <article class="card">
+                        <h3 class="card-title">1. Kurz schildern</h3>
+                        <p class="card-text">
+                            Sie schreiben mir kurz, was nicht funktioniert – gerne mit Foto oder Screenshot.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <h3 class="card-title">2. Einschätzung & Termin</h3>
+                        <p class="card-text">
+                            Ich melde mich mit einer ersten Einschätzung und einem Vorschlag, wie wir vorgehen.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <h3 class="card-title">3. Umsetzung</h3>
+                        <p class="card-text">
+                            Remote oder vor Ort – wir lösen das Problem Schritt für Schritt, transparent und nachvollziehbar.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <footer>
+                <div>© <span id="year"></span> Pirling IT – IT-Support.</div>
+                <div>Impressum & Datenschutz folgen, sobald das Angebot produktiv geht.</div>
+            </footer>
+        </div>
+    </main>
+</div>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Pirling IT – IT-Support, der sitzt</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root {
+    --bg: #020617;
+    --bg-soft: #020617;
+    --accent: #6366f1;
+    --accent-soft: #4f46e5;
+    --accent-strong: #a855f7;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --border: rgba(148,163,184,0.25);
+    --glass: rgba(15,23,42,0.75);
+    --card: rgba(15,23,42,0.9);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(79,70,229,0.35), transparent 55%),
+        radial-gradient(circle at 90% 10%, rgba(168,85,247,0.35), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(15,23,42,1), rgba(2,6,23,1));
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Layout-Wrapper */
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header / Nav */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(18px);
+    background: linear-gradient(to bottom, rgba(2,6,23,0.95), rgba(2,6,23,0.7), transparent);
+    border-bottom: 1px solid rgba(15,23,42,0.9);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background:
+        conic-gradient(from 210deg, #22d3ee, #6366f1, #a855f7, #22d3ee);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b1020;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow:
+        0 0 0 1px rgba(15,23,42,0.9),
+        0 12px 30px rgba(15,23,42,0.9);
+}
+
+.brand-text-main {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.brand-text-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    font-size: 0.9rem;
+}
+
+.nav a {
+    position: relative;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.2rem 0;
+    transition: color 0.15s ease;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.2rem;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+    transition: width 0.2s ease;
+}
+
+.nav a:hover {
+    color: var(--text);
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero */
+
+.hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 3rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.hero-kicker {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #a5b4fc;
+    margin-bottom: 0.7rem;
+}
+
+.hero-title {
+    font-size: clamp(2.4rem, 4vw, 3.1rem);
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+}
+
+.hero-title span {
+    background: linear-gradient(120deg, #e5e7eb, #a5b4fc, #f97316);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    max-width: 34rem;
+    margin-bottom: 1.6rem;
+}
+
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.6rem;
+}
+
+.badge {
+    font-size: 0.78rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,0.6);
+    color: var(--text-muted);
+    background: rgba(15,23,42,0.85);
+    backdrop-filter: blur(10px);
+}
+
+.badge--accent {
+    border-color: rgba(129,140,248,0.9);
+    color: #c7d2fe;
+    background: radial-gradient(circle at top left, rgba(79,70,229,0.5), rgba(15,23,42,0.95));
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition:
+        background 0.18s ease,
+        transform 0.12s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #f9fafb;
+    box-shadow:
+        0 14px 35px rgba(79,70,229,0.55),
+        0 0 0 1px rgba(15,23,42,0.9);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        0 18px 45px rgba(79,70,229,0.7),
+        0 0 0 1px rgba(15,23,42,0.9);
+}
+
+.btn-ghost {
+    background: rgba(15,23,42,0.8);
+    border-color: rgba(148,163,184,0.5);
+    color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+    background: rgba(15,23,42,0.95);
+    border-color: rgba(209,213,219,0.9);
+    color: var(--text);
+}
+
+.hero-aside {
+    position: relative;
+}
+
+.hero-orbit {
+    position: absolute;
+    inset: -40px -30px -40px -30px;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.18), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(129,140,248,0.22), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(168,85,247,0.18), transparent 55%);
+    opacity: 0.9;
+    filter: blur(18px);
+    z-index: -2;
+}
+
+.hero-card {
+    position: relative;
+    background: radial-gradient(circle at top left, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+    border-radius: 1.4rem;
+    border: 1px solid rgba(148,163,184,0.35);
+    padding: 1.4rem 1.3rem 1.3rem;
+    box-shadow:
+        0 22px 60px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,1);
+    backdrop-filter: blur(16px);
+}
+
+.hero-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.9rem;
+}
+
+.hero-card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.hero-card-pill {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(52,211,153,0.7);
+    color: #bbf7d0;
+    background: rgba(6,95,70,0.4);
+}
+
+.hero-card-body {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+}
+
+.hero-card-list {
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.hero-card-list li::before {
+    content: "•";
+    color: var(--accent);
+    margin-right: 0.4rem;
+}
+
+/* Sections */
+
+.main {
+    flex: 1;
+}
+
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.section-title {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+}
+
+.section-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Cards / Grid */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.3rem;
+    margin-bottom: 2.5rem;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 1rem;
+    border: 1px solid rgba(15,23,42,0.95);
+    padding: 1.1rem 1.1rem 1.2rem;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.7);
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 0.16s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(79,70,229,0.18), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(168,85,247,0.18), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: -1;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129,140,248,0.9);
+    box-shadow:
+        0 24px 70px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,1);
+    background: radial-gradient(circle at top left, rgba(15,23,42,0.98), rgba(15,23,42,1));
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-title {
+    font-size: 0.98rem;
+    margin-bottom: 0.4rem;
+}
+
+.card-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.tag {
+    font-size: 0.7rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(31,41,55,0.9);
+    background: rgba(15,23,42,0.95);
+    color: var(--text-muted);
+}
+
+/* About */
+
+.about {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.about-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.about-highlight {
+    background: radial-gradient(circle at top left, rgba(79,70,229,0.35), rgba(15,23,42,0.98));
+    border-radius: 1.1rem;
+    border: 1px solid rgba(129,140,248,0.9);
+    padding: 1.1rem 1.1rem 1.2rem;
+    font-size: 0.86rem;
+    box-shadow:
+        0 20px 55px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,1);
+}
+
+.about-highlight strong {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+/* Timeline */
+
+.timeline {
+    position: relative;
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    top: 0.2rem;
+    bottom: 0.2rem;
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-strong));
+    opacity: 0.8;
+}
+
+.step {
+    position: relative;
+    margin-bottom: 1.4rem;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.step-dot {
+    position: absolute;
+    left: -0.1rem;
+    top: 0.25rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #020617;
+    box-shadow:
+        0 0 0 3px rgba(79,70,229,0.7),
+        0 0 0 1px rgba(15,23,42,1);
+}
+
+.step-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.step-text {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+}
+
+/* CTA */
+
+.cta {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 3.5rem;
+}
+
+.cta-inner {
+    position: relative;
+    border-radius: 1.5rem;
+    padding: 1.8rem 1.6rem 1.9rem;
+    background: radial-gradient(circle at top left, rgba(79,70,229,0.4), rgba(15,23,42,0.98));
+    border: 1px solid rgba(129,140,248,0.9);
+    box-shadow:
+        0 26px 70px rgba(15,23,42,0.98),
+        0 0 0 1px rgba(15,23,42,1);
+    overflow: hidden;
+}
+
+.cta-inner::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.25), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(168,85,247,0.25), transparent 55%);
+    opacity: 0.7;
+    filter: blur(18px);
+    z-index: -1;
+}
+
+.cta-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+
+.cta-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.cta-note {
+    font-size: 0.8rem;
+    color: #c7d2fe;
+}
+
+/* Footer */
+
+.footer {
+    border-top: 1px solid rgba(15,23,42,0.95);
+    padding: 1.4rem 1.5rem 1.6rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 2.4rem;
+    }
+
+    .hero-aside {
+        order: -1;
+    }
+
+    .about {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .header-inner {
+        padding-inline: 1rem;
+    }
+
+    .hero,
+    .section,
+    .cta {
+        padding-inline: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav {
+        display: none;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-icon">P</div>
+                <div>
+                    <div class="brand-text-main">Pirling IT</div>
+                    <div class="brand-text-sub">Individueller IT-Support für Zuhause & kleine Unternehmen</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#about">Über mich</a>
+                <a href="#ablauf">Ablauf</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+
+        <section class="hero">
+            <div>
+                <div class="hero-kicker">IT-Support, der in den Alltag passt</div>
+                <h1 class="hero-title">
+                    Pragmatische IT-Lösungen<br>
+                    <span>für echte Menschen – nicht für Rechenzentren.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Sie möchten, dass Ihre Technik einfach funktioniert – ohne Fachchinesisch, ohne versteckte Kosten.
+                    Ich kümmere mich um Ihre IT, damit Sie sich um Ihr Leben kümmern können.
+                </p>
+
+                <div class="hero-badges">
+                    <span class="badge badge--accent">Remote & vor Ort (nach Absprache)</span>
+                    <span class="badge">Windows & Linux</span>
+                    <span class="badge">Netzwerk & WLAN</span>
+                    <span class="badge">Privat & kleine Unternehmen</span>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#kontakt" class="btn btn-primary">Problem schildern</a>
+                    <a href="#leistungen" class="btn btn-ghost">Typische Fälle ansehen</a>
+                </div>
+            </div>
+
+            <aside class="hero-aside">
+                <div class="hero-orbit"></div>
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-title">Schnelle Hilfe bei Akut-Problemen</div>
+                        <div class="hero-card-pill">Priorisiert</div>
+                    </div>
+                    <div class="hero-card-body">
+                        Wenn nichts mehr geht: kurze Beschreibung, ein Foto oder Screenshot – ich melde mich so schnell wie möglich.
+                    </div>
+                    <ul class="hero-card-list">
+                        <li>System startet nicht oder ist extrem langsam</li>
+                        <li>Drucker, WLAN oder E-Mail streiken</li>
+                        <li>Unsicherheit nach Updates oder Fehlermeldungen</li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
+
+        <section class="section" id="leistungen">
+            <div class="section-header">
+                <h2 class="section-title">Leistungen</h2>
+                <div class="section-sub">Klar strukturiert, transparent erklärt.</div>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Fehlersuche & Problemlösung</h3>
+                    <p class="card-text">
+                        System langsam, Programme stürzen ab, Drucker streikt? Ich gehe strukturiert vor, erkläre die Schritte
+                        und dokumentiere, was getan wurde – damit Sie später nachvollziehen können, was passiert ist.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Windows</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Treiber & Updates</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Netzwerk & WLAN</h3>
+                    <p class="card-text">
+                        Vom Router bis zum letzten Zimmer: saubere Struktur, sinnvolle Namen, stabile Verbindungen – auch in
+                        komplexeren Haushalten mit vielen Geräten.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Fritz!Box</span>
+                        <span class="tag">LAN & WLAN</span>
+                        <span class="tag">Heimnetz</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Einrichtung & Umzug</h3>
+                    <p class="card-text">
+                        Neuer PC, Notebook oder Server? Ich richte Systeme so ein, dass sie zu Ihrem Alltag passen – inklusive
+                        Datensicherung und sinnvoller Ordnerstruktur.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Backup</span>
+                        <span class="tag">E-Mail & Office</span>
+                        <span class="tag">Datenumzug</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Beratung & Zweitmeinung</h3>
+                    <p class="card-text">
+                        Sie sind unsicher, ob ein Angebot sinnvoll ist? Wir rechnen gemeinsam nach und schauen, was wirklich zu
+                        Ihnen passt – technisch, finanziell und praktisch.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Kaufberatung</span>
+                        <span class="tag">Kosten-Nutzen</span>
+                        <span class="tag">Langfristige Planung</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="section-header">
+                <h2 class="section-title">Über mich</h2>
+                <div class="section-sub">Technik mit Bodenhaftung.</div>
+            </div>
+
+            <div class="about">
+                <div class="about-text">
+                    <p>
+                        Ich arbeite seit Jahren praktisch mit Systemen, Netzwerken und Geräten, die im Alltag wirklich genutzt
+                        werden – nicht nur im Labor. Mir ist wichtig, dass Lösungen nachvollziehbar, reproduzierbar und
+                        alltagstauglich sind.
+                    </p>
+                    <br>
+                    <p>
+                        Statt „einmal schnell irgendwas hinbiegen“ setze ich auf saubere Struktur, klare Dokumentation und
+                        Entscheidungen, die auch in ein paar Monaten noch Sinn ergeben. Wenn wir etwas ändern, dann so, dass
+                        Sie es verstehen – und sich später nicht wieder alles neu erklären lassen müssen.
+                    </p>
+                </div>
+
+                <aside class="about-highlight">
+                    <strong>Was Sie von mir erwarten können</strong>
+                    • Ehrliche Einschätzung, ob sich eine Reparatur oder ein Umbau lohnt.<br>
+                    • Klare Absprachen, kein Fachjargon ohne Übersetzung.<br>
+                    • Lösungen, die zu Ihrem Alltag passen – nicht zu Hochglanz-Broschüren.
+                </aside>
+            </div>
+        </section>
+
+        <section class="section" id="ablauf">
+            <div class="section-header">
+                <h2 class="section-title">Ablauf</h2>
+                <div class="section-sub">In wenigen Schritten zur Lösung.</div>
+            </div>
+
+            <div class="timeline">
+                <div class="step">
+                    <div class="step-dot"></div>
+                    <div class="step-title">1. Kurz schildern</div>
+                    <div class="step-text">
+                        Sie schreiben mir kurz, was nicht funktioniert – gerne mit Foto oder Screenshot. Je konkreter, desto
+                        schneller kann ich einschätzen, was los ist.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-dot"></div>
+                    <div class="step-title">2. Einschätzung & Termin</div>
+                    <div class="step-text">
+                        Ich melde mich mit einer ersten Einschätzung und einem Vorschlag, wie wir vorgehen – remote oder vor
+                        Ort, je nach Situation.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-dot"></div>
+                    <div class="step-title">3. Umsetzung</div>
+                    <div class="step-text">
+                        Wir lösen das Problem Schritt für Schritt, transparent und nachvollziehbar. Auf Wunsch dokumentiere ich
+                        die wichtigsten Änderungen für Sie.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta" id="kontakt">
+            <div class="cta-inner">
+                <div class="cta-title">Bereit, dass Ihre Technik einfach funktioniert?</div>
+                <div class="cta-text">
+                    Schildern Sie mir kurz Ihr Anliegen – ich melde mich so schnell wie möglich mit einer Einschätzung und einem
+                    Vorschlag für das weitere Vorgehen.
+                </div>
+                <div class="cta-actions">
+                    <a href="mailto:info@pirling-it.de" class="btn btn-primary">E-Mail an info@pirling-it.de schreiben</a>
+                    <div class="cta-note">Antwortzeit in der Regel innerhalb weniger Stunden.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>© 2026 Pirling IT – IT-Support.</div>
+            <div>Impressum & Datenschutz folgen, sobald das Angebot produktiv geht.</div>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

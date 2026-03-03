@@ -86,34 +86,71 @@
     </ul>
 </section>
 
-<section class="projects">
-    <h2>Projekte & Lab</h2>
+<style>
+.accordion {
+    background-color: #1a1a1a;
+    color: #eee;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid #222;
+}
+.active, .accordion:hover {
+    background-color: #222;
+}
+.panel {
+    padding: 0 15px;
+    display: none;
+    background-color: #111;
+    overflow: hidden;
+    border-left: 2px solid #4da3ff;
+    margin-bottom: 15px;
+}
+</style>
 
-    <div>
-        <strong>Active Directory Testumgebung</strong><br>
-        OU‑Struktur, Benutzerverwaltung, GPO‑Tests, DNS‑Konfiguration.
-    </div>
+<h2>Projekte & Lab</h2>
 
-    <div>
-        <strong>Linux‑Server & Dienste</strong><br>
-        SSH‑Workflows, Systemd‑Services, Log‑Analyse, Netzwerk‑Tools.
-    </div>
+<button class="accordion">Active Directory Testumgebung</button>
+<div class="panel">
+  <p>OU‑Struktur, Benutzerverwaltung, GPO‑Tests, DNS‑Konfiguration.</p>
+</div>
 
-    <div>
-        <strong>Netzwerkdiagnose</strong><br>
-        SMB‑Fehler, DNS‑Propagation, Routing‑Probleme, WLAN‑Optimierung.
-    </div>
+<button class="accordion">Linux‑Server & Dienste</button>
+<div class="panel">
+  <p>SSH‑Workflows, Systemd‑Services, Log‑Analyse, Netzwerk‑Tools.</p>
+</div>
 
-    <div>
-        <strong>Remote‑Workflows</strong><br>
-        RDP‑Setup, SSH‑Mobile‑Administration, Monitoring.
-    </div>
+<button class="accordion">Netzwerkdiagnose</button>
+<div class="panel">
+  <p>SMB‑Fehler, DNS‑Propagation, Routing‑Probleme, WLAN‑Optimierung.</p>
+</div>
 
-    <div>
-        <strong>Legacy‑Hardware‑Optimierung</strong><br>
-        Sony VAIO, AMD E2‑1800, Mint XFCE 21.3, Energieprofile, Treiber‑Tuning.
-    </div>
-</section>
+<button class="accordion">Remote‑Workflows</button>
+<div class="panel">
+  <p>RDP‑Setup, SSH‑Mobile‑Administration, Monitoring.</p>
+</div>
+
+<button class="accordion">Legacy‑Hardware‑Optimierung</button>
+<div class="panel">
+  <p>Sony VAIO, AMD E2‑1800, Mint XFCE 21.3, Energieprofile, Treiber‑Tuning.</p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  });
+}
+</script>
 
 <section>
     <h2>Arbeitsweise</h2>

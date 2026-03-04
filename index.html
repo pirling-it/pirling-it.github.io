@@ -166,22 +166,76 @@
 
 <button class="accordion">Linux‑Server & Dienste</button>
 <div class="panel">
-  <p>SSH‑Workflows, Systemd‑Services, Log‑Analyse, Netzwerk‑Tools.</p>
+  <p>
+    Aufbau und Administration schlanker Linux‑Serverumgebungen mit Fokus auf Stabilität,
+    Remote‑Workflows und reproduzierbare Systemkonfigurationen. Einsatz als Test‑,
+    Service‑ und Diagnoseplattform für verschiedene Netzwerk‑ und Backend‑Dienste.
+  </p>
+
+  <ul>
+    <li>SSH‑Workflows für lokale und mobile Administration (inkl. Key‑basierter Authentifizierung)</li>
+    <li>Erstellung und Verwaltung eigener Systemd‑Services (Startverhalten, Logging, Restart‑Policies)</li>
+    <li>Log‑Analyse über journalctl, syslog und dienstspezifische Logs</li>
+    <li>Einsatz typischer Netzwerk‑Tools (nmap, dig, traceroute, tcpdump) zur Fehlerdiagnose</li>
+    <li>Konfiguration leichter Web‑ und Backend‑Dienste (Apache/Nginx, PHP, SQLite/MySQL‑Light)</li>
+    <li>Automatisierte Wartung und Updates über Skripte und Timer‑Units</li>
+    <li>Testumgebungen unter Debian/MX‑Linux, optimiert für Legacy‑Hardware</li>
+  </ul>
 </div>
 
 <button class="accordion">Netzwerkdiagnose</button>
 <div class="panel">
-  <p>SMB‑Fehler, DNS‑Propagation, Routing‑Probleme, WLAN‑Optimierung.</p>
+  <p>
+    Analyse und Behebung typischer Netzwerkprobleme in Heim- und Kleinunternehmensumgebungen.
+    Fokus auf SMB‑Freigaben, DNS‑Verhalten, Routing‑Konflikte und WLAN‑Stabilität.
+  </p>
+
+  <ul>
+    <li>Diagnose von SMB‑Fehlern (Authentifizierung, Rechte, Namensauflösung, Protokollversionen)</li>
+    <li>Analyse von DNS‑Propagation, Caching‑Verhalten und lokalen Resolver‑Problemen</li>
+    <li>Routing‑Fehler erkennen und beheben (Subnetze, Gateways, ARP‑Konflikte)</li>
+    <li>WLAN‑Optimierung (Kanalwahl, Interferenzen, Signalstärke, Roaming‑Verhalten)</li>
+    <li>Einsatz typischer Netzwerk‑Tools wie <code>nmap</code>, <code>dig</code>, <code>traceroute</code>, <code>tcpdump</code></li>
+    <li>Fehleranalyse in gemischten Windows‑/Linux‑Netzen</li>
+    <li>Dokumentation und reproduzierbare Lösungswege für wiederkehrende Probleme</li>
+  </ul>
 </div>
 
 <button class="accordion">Remote‑Workflows</button>
 <div class="panel">
-  <p>RDP‑Setup, SSH‑Mobile‑Administration, Monitoring.</p>
+  <p>
+    Aufbau stabiler Remote‑Arbeitsabläufe für Administration, Support und Monitoring.
+    Fokus auf zuverlässige Verbindungen, mobile SSH‑Nutzung und reproduzierbare Fernwartungsprozesse.
+  </p>
+
+  <ul>
+    <li>Einrichtung und Absicherung von RDP‑Verbindungen (Benutzerrechte, Firewall, Port‑Konfiguration)</li>
+    <li>SSH‑Mobile‑Administration über Smartphone und Tablet (Key‑Auth, Tunneling, Terminal‑Workflows)</li>
+    <li>Monitoring von Systemzuständen über CLI‑Tools und leichte Web‑Interfaces</li>
+    <li>Remote‑Fehleranalyse in Windows‑ und Linux‑Umgebungen</li>
+    <li>Aufbau schlanker Workflows für schnelle Eingriffe ohne GUI‑Abhängigkeit</li>
+    <li>Dokumentation und Standardisierung wiederkehrender Remote‑Abläufe</li>
+  </ul>
 </div>
 
 <button class="accordion">Legacy‑Hardware‑Optimierung</button>
 <div class="panel">
-  <p>Sony VAIO, AMD E2‑1800, MX-25.1_Xfce_ahs_x64 Infinity, Energieprofile, Treiber‑Tuning.</p>
+  <p>
+    Wiederbelebung und Optimierung eines Sony‑VAIO‑Notebooks mit AMD E2‑1800 APU.
+    Ziel war ein stabiles, alltagstaugliches System trotz begrenzter Ressourcen.
+    Einsatz von MX‑25.1_Xfce_ahs_x64 Infinity für moderne Treiber und bestmögliche Performance.
+  </p>
+
+  <ul>
+    <li>Analyse der Hardwaregrenzen (Bobcat‑Architektur, Radeon HD 7340, 4 GB RAM)</li>
+    <li>Auswahl einer optimalen Linux‑Distribution (MX‑Linux 25 AHS, XFCE, Liquorix‑Kernel)</li>
+    <li>Treiber‑Tuning für Radeon‑Grafik (r600), inklusive OpenGL‑Optimierung</li>
+    <li>Energieprofil‑Optimierung (Governor „performance“, Deaktivierung unnötiger Dienste)</li>
+    <li>Systemd‑ und Boot‑Optimierungen für kürzere Startzeiten</li>
+    <li>SSD‑Konfiguration (Samsung 860 QVO) für maximale Reaktionsgeschwindigkeit</li>
+    <li>Fehleranalyse und Stabilisierung von WLAN, Audio und Suspend‑Verhalten</li>
+    <li>Dokumentation reproduzierbarer Schritte für ähnliche Legacy‑Systeme</li>
+  </ul>
 </div>
 
 <script>

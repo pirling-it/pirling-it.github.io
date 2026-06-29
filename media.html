@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Pirling Media – Einsatzdokumentation & Technikjournalismus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* Farben & Layout wie index3 */
+:root {
+    --bg: #020617;
+    --accent: #6366f1;
+    --accent-strong: #a855f7;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --border: rgba(148,163,184,0.25);
+    --glass: rgba(15,23,42,0.75);
+    --card: rgba(15,23,42,0.9);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(79,70,229,0.35), transparent 55%),
+        radial-gradient(circle at 90% 10%, rgba(168,85,247,0.35), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(15,23,42,1), rgba(2,6,23,1));
+    color: var(--text);
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(18px);
+    background: rgba(2,6,23,0.9);
+    border-bottom: 1px solid rgba(15,23,42,0.9);
+}
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background: conic-gradient(from 210deg, #22d3ee, #6366f1, #a855f7, #22d3ee);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #0b1020;
+}
+.brand-text-main {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.nav a {
+    color: var(--text-muted);
+    margin-left: 1.4rem;
+    text-decoration: none;
+}
+.nav a:hover { color: var(--text); }
+
+/* Hero */
+.hero {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+.hero-title {
+    font-size: clamp(2.4rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+.hero-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,0.5);
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+}
+.hero-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 1.4rem;
+    border-radius: 1.4rem;
+}
+
+/* Grid */
+.section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+.section-title {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.3rem;
+}
+.card {
+    background: var(--card);
+    border: 1px solid rgba(15,23,42,0.95);
+    padding: 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.7);
+}
+.card-title { margin-bottom: 0.4rem; }
+.card-text { color: var(--text-muted); }
+
+/* Footer */
+.footer {
+    border-top: 1px solid rgba(15,23,42,0.95);
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <div class="brand">
+            <div class="brand-icon">P</div>
+            <div>
+                <div class="brand-text-main">Pirling Media</div>
+                <div class="brand-text-sub">Einsatzdokumentation & Technikjournalismus</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="#berichte">Berichte</a>
+            <a href="#doku">Dokumentationen</a>
+            <a href="#about">Über das Projekt</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div>
+        <h1 class="hero-title">Einsatzdokumentation aus dem Alltag.</h1>
+        <p class="hero-subtitle">
+            Foto‑, Video‑ und Technikberichte aus echten Situationen.  
+            Dieses Projekt dient als Nachweis journalistischer Tätigkeit.
+        </p>
+
+        <div class="badge">Feuerwehr & Einsatzsituationen</div>
+        <div class="badge">Technikjournalismus</div>
+        <div class="badge">Alltagsbeobachtungen</div>
+        <div class="badge">Foto & Video</div>
+    </div>
+
+    <div class="hero-card">
+        <h3>Schnelle Einsatzberichte</h3>
+        <p>Kurze Zusammenfassungen, Fotos und Beobachtungen direkt aus dem Alltag.</p>
+    </div>
+</section>
+
+<section class="section" id="berichte">
+    <h2 class="section-title">Aktuelle Berichte</h2>
+    <div class="cards">
+        <div class="card">
+            <h3 class="card-title">Einsatzbericht</h3>
+            <p class="card-text">Kurze Zusammenfassung eines dokumentierten Einsatzes.</p>
+        </div>
+        <div class="card">
+            <h3 class="card-title">Technik‑Analyse</h3>
+            <p class="card-text">Berichte über Geräte, Systeme und technische Abläufe.</p>
+        </div>
+        <div class="card">
+            <h3 class="card-title">Foto‑Dokumentation</h3>
+            <p class="card-text">Bilder aus Alltagssituationen und Einsätzen.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <h2 class="section-title">Über das Projekt</h2>
+    <p>
+        Pirling Media dokumentiert Einsatzsituationen, Technik und Alltagsbeobachtungen.
+        Ziel ist eine nachvollziehbare, transparente Darstellung realer Ereignisse.
+        Dieses Projekt dient als offizieller Nachweis journalistischer Tätigkeit.
+    </p>
+</section>
+
+<section class="section" id="kontakt">
+    <h2 class="section-title">Kontakt</h2>
+    <p>Für Medienanfragen oder Nachweise: info@pirling-it.de</p>
+</section>
+
+<footer class="footer">
+    © 2026 Pirling Media – Einsatzdokumentation & Technikjournalismus
+</footer>
+
+</body>
+</html>
